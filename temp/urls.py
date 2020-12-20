@@ -15,12 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.contrib.auth import views
+from django.contrib.auth import views as auth_views
 from django.urls import path, include
-
 from django.conf import settings
 from django.conf.urls.static import static
-
 from apps.core.views import frontpage,register, login
+
+from apps.core.forms import UserPasswordResetForm, UserNewPasswordForm
 
 urlpatterns = [
     # super adminpanel
@@ -30,6 +31,12 @@ urlpatterns = [
     path('register/', register, name='register'),
     path('login/', login, name='login'),
     path('logout/', views.LogoutView.as_view(), name='logout'),
+
+    # reset password
+    path('password_reset/',auth_views.PasswordResetView.as_view(template_name="access/password_reset_form.html", form_class=UserPasswordResetForm),name='password_reset'),
+    path('password_reset_email_sent/',auth_views.PasswordResetDoneView.as_view(template_name="access/password_reset_email_sent.html"),name='password_reset_done'),
+    path('reset/<uidb64>/<token>/',auth_views.PasswordResetConfirmView.as_view(template_name="access/password_reset_new_password.html", form_class=UserNewPasswordForm),name='password_reset_confirm'),
+    path('password_reset_complete/',auth_views.PasswordResetCompleteView.as_view(template_name="access/password_reset_completed.html"),name='password_reset_complete'),
 
     # Website Urls
     path('website/', include('apps.website.urls')),
