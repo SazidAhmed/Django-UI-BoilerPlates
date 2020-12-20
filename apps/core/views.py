@@ -42,7 +42,7 @@ def register(request):
       messages.error(request, 'Password Do No Matched!')
       return redirect('register')
   else:
-    return render(request, 'website/register.html')
+    return render(request, 'access/register.html')
 
 def login(request):
   if request.method == 'POST':
@@ -59,7 +59,7 @@ def login(request):
       messages.error(request, 'Invalid Username Or Password!')
       return redirect('login')
   else:
-    return render(request, 'website/login.html')
+    return render(request, 'access/login.html')
 
 def logout(request):
   if request.method == 'POST':
@@ -67,8 +67,5 @@ def logout(request):
     messages.success(request, 'You Are Now Logged Out!')
     return redirect('frontpage')
 
-  return render(request, 'website/register.html')
-
-def plans(request):
-  return render(request, 'website/plans.html')
+  return render(request, 'access/register.html')
 
