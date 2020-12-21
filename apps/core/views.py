@@ -3,6 +3,8 @@ from django.contrib import messages, auth
 # from django.contrib.auth.forms import UserCreationForm
 # from .forms import CreateUserForm
 from django.contrib.auth.models import User
+
+
 def frontpage(request):
   return render(request, 'website/frontpage.html')
 
@@ -13,7 +15,7 @@ def register(request):
     last_name = request.POST['last_name']
     username = request.POST['username']
     email = request.POST['email']
-    password = request.POST['password']
+    password = request.POST['password1']
     password2 = request.POST['password2']
 
     #validation
@@ -34,7 +36,6 @@ def register(request):
           # messages.success(request, 'You Are Logged In!')
           # return redirect('dashboard')
           user.save()
-          userprofile = Userprofile.objects.create(user=user)
           messages.success(request, 'You Are Now Registered And Can Log In!')
           return redirect('login')
 
@@ -43,6 +44,21 @@ def register(request):
       return redirect('register')
   else:
     return render(request, 'access/register.html')
+
+
+# def register(request):
+#   if request.method == 'POST':
+#     form = UserCreationForm(request.POST)
+#     if form.is_valid():
+#       user = form.save()
+#       # user.email = user.username
+#       user.save()
+#       userprofile = Userprofile.objects.create(user=user)
+#       messages.success(request, 'You Are Registered And Can Log In!')
+#       return redirect('login')
+#   else:
+#     form = UserCreationForm()
+#   return render(request, 'access/register.html', {'form': form}) 
 
 def login(request):
   if request.method == 'POST':
