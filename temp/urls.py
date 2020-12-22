@@ -7,13 +7,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 #models
-from apps.core.views import frontpage,register, login
+from apps.core.views import register, login
 
 urlpatterns = [
     # super adminpanel
     path('admin/', admin.site.urls),
     # Core Urls
-    path('', frontpage, name='frontpage'),
     path('register/', register, name='register'),
     path('login/', auth_views.LoginView.as_view(template_name="access/login.html"), name='login'),
     # path('login/', login, name='login'),
@@ -26,7 +25,7 @@ urlpatterns = [
     path('password_reset_complete/',auth_views.PasswordResetCompleteView.as_view(template_name="access/password_reset_completed.html"),name='password_reset_complete'),
 
     # Website Urls
-    path('website/', include('apps.website.urls')),
+    path('', include('apps.website.urls')),
 
     # Adminpanel Urls
     path('adminpanel/', include('apps.adminpanel.urls')),
