@@ -8,7 +8,7 @@
                 <i class="fa fa-circle-notch text-primary"></i>
             </span>
             <span class="smini-hide font-size-h5 tracking-wider">
-                Bookmark <span class="font-w400">Manager</span>
+                Temp <span class="font-w400">Manager</span>
             </span>
         </a>
         <!-- END Logo -->
@@ -84,6 +84,12 @@
                     </ul>
                 </li>
                 {% else %}
+                <li class="nav-main-item">
+                    <a class="nav-main-link" href="{% url 'plan' %}">
+                        <i class="nav-main-link-icon far fa-paper-plane"></i>
+                        <span class="nav-main-link-name">Plans</span>
+                    </a>
+                </li>
                 <li class="nav-main-item">
                     <a class="nav-main-link" href="{% url 'login' %}">
                         <i class="nav-main-link-icon fa fa-sign-in-alt"></i>
@@ -170,6 +176,12 @@
                         </ul>
                     </li>
                     {% else %}
+                    <li class="nav-main-item">
+                        <a class="nav-main-link" href="{% url 'plan' %}">
+                            <i class="nav-main-link-icon far fa-paper-plane"></i>
+                            <span class="nav-main-link-name">Plans</span>
+                        </a>
+                    </li>
                     <li class="nav-main-item">
                         <a class="nav-main-link" href="{% url 'login' %}">
                             <i class="nav-main-link-icon fa fa-sign-in-alt"></i>
