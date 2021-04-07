@@ -1,0 +1,95 @@
+<!-- leftside bar -->
+{% load static %}
+<ul id="nav-mobile" class="sidenav sidenav-fixed">
+    <li>
+      <div class="user-view">
+          <div class="background">
+            <img src='{{ URL::asset("uploads/bg.jpg") }}' class="responsive-img">
+          </div>
+       
+          <a href=""><img src='{{ URL::asset("uploads/icon.png") }}' alt="" class="circle"></a>
+          <span class="white-text name">{{ Auth::user()->name }}</span>
+          <span class="white-text email">{{ Auth::user()->email }}</span>
+      </div>
+    </li>
+  
+    <li>
+      <a href="{{ route('home') }}"><i class="material-icons teal-text">dashboard</i>Dashboard</a>
+    </li>
+      <!-- Category -->
+      <li>
+      <a class="dropdown-trigger" href="#!" data-target="category"><i class="material-icons teal-text">dashboard</i>Categories<i class="material-icons right">arrow_drop_down</i>
+      </a>
+      <ul id="category" class="dropdown-content">
+        <li><a href="#"><i class="material-icons teal-text">visibility</i>Category List</a></li>
+        <li><a href="{{ route('categories') }}"><i class="material-icons teal-text">add</i>Add New Category</a></li>
+      </ul>
+    </li>
+  
+    <!-- Product -->
+    <li>
+      <a class="dropdown-trigger" href="#!" data-target="products"><i class="material-icons teal-text">dashboard</i>Products<i class="material-icons right">arrow_drop_down</i>
+      </a>
+      <ul id="products" class="dropdown-content">
+        <li><a href="{{ route('allProducts') }}"><i class="material-icons teal-text">visibility</i>Product List</a></li>
+        <li><a href="{{ route('addProduct') }}"><i class="material-icons teal-text">add</i>Add New Product</a></li>
+      </ul>
+    </li>
+  
+     <!-- Users -->
+     <li>
+      <a class="dropdown-trigger" href="#!" data-target="users"><i class="material-icons teal-text">dashboard</i>Users<i class="material-icons right">arrow_drop_down</i>
+      </a>
+      <ul id="users" class="dropdown-content">
+        <li><a href="{{ route('users') }}"><i class="material-icons teal-text">visibility</i>All Users</a></li>
+        <li><a href="#"><i class="material-icons teal-text">add</i>Add New User</a></li>
+      </ul>
+    </li>
+  
+    <!-- Customers -->
+    <li>
+      <a class="dropdown-trigger" href="#!" data-target="customers"><i class="material-icons teal-text">dashboard</i> Customers<i class="material-icons right">arrow_drop_down</i>
+      </a>
+      <ul id="customers" class="dropdown-content">
+        <li><a href="{{ route('list-customer') }}"><i class="material-icons teal-text">visibility</i>Customer List</a></li>
+        <li><a href="{{ route('add-customer') }}"><i class="material-icons teal-text">add</i>Add New Customer</a></li>
+      </ul>
+    </li>
+  
+      <!-- Sales Report -->
+      <li>
+      <a class="dropdown-trigger" href="#!" data-target="sales"><i class="material-icons teal-text">dashboard</i>Reports<i class="material-icons right">arrow_drop_down</i>
+      </a>
+      <ul id="sales" class="dropdown-content">
+        <li><a href="{{ route('list-customer') }}"><i class="material-icons teal-text">visibility</i>Sales By Date</a></li>
+        <li><a href="{{ route('list-customer') }}"><i class="material-icons teal-text">visibility</i>Sales By Product</a></li>
+        <li><a href="{{ route('list-customer') }}"><i class="material-icons teal-text">visibility</i>Returned Product</a></li>
+      </ul>
+    </li>
+  
+    <!-- Logout -->
+    <li>
+      <a  href="{{ route('logout') }}"
+        onclick="event.preventDefault();
+                      document.getElementById('logout-form').submit();">
+       <i class="material-icons teal-text">exit_to_app</i>Logout
+      </a>
+    </li>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+    </form>
+  
+  
+    <!-- footer -->
+    <div class="sidebar-footer">
+      <ul>
+        <li>
+          <a href="https://webcore.xyz/" style="color: #bdbdbd; text-align: center">Software © Webcore 2020</a>
+        </li>
+      </ul>
+    </div>
+  </ul>
+  
+  <!-- Mobile menu -->
+  <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+  

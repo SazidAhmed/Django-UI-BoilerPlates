@@ -1,0 +1,55 @@
+{% load static %}
+<!-- leftside bar -->
+<!-- Dropdown Structure -->
+<ul id="login-dropdown-guest-sidenav" class="dropdown-content">
+    <li>
+        <a href="/">Dashboard</a>
+    </li>
+    <li>
+        <a  href="{% url 'logout' %}"
+            onclick="event.preventDefault();
+            document.getElementById('logout-form').submit();">
+            logout
+        </a>
+    </li>
+    <form id="logout-form" action="{% url 'logout' %}" method="POST" style="display: none;">
+    {% csrf_token %}
+    <input type="hidden">
+    </form>
+</ul>
+
+<ul id="nav-mobile" class="sidenav">
+  
+    <!-- side menu items -->
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Shop</a></li>
+    <!--File dropdown list -->
+    <li>
+    <a class="dropdown-trigger" href="#!" data-target="news">Category<i class="material-icons right">arrow_drop_down</i>
+    </a>
+        <ul id="news" class="dropdown-content">
+            <li><a href="#">Guitar</a></li>
+            <li><a href="#">Bass</a></li>
+        </ul>
+    </li>
+    {% if request.user.is_authenticated %}
+    <li><a class="dropdown-trigger" href="#!" data-target="login-dropdown-guest-nav">Welcome {{ user.username }}<i class="material-icons right">arrow_drop_down</i></a></li>
+    {% else %}
+        <li>
+            <a href="{% url 'login' %}">Login</a>
+        </li>
+    {% endif %}
+
+
+  <!-- footer -->
+  <div class="sidebar-footer">
+    <ul>
+      <li>
+      <a href="https://webcore.xyz/" style="color: #bdbdbd; text-align: center">Software © Webcore 2020</a>
+      </li>
+    </ul>
+  </div>
+</ul>
+
+<!-- Mobile menu -->
+<a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>

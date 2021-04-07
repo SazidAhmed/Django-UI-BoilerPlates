@@ -1,0 +1,13 @@
+{% load static %}
+<!-- top nav -->
+<nav class="white" role="navigation">
+    <div class="nav-wrapper">
+      <a id="logo-container" href="{{ url('/') }}" class="brand-logo right">
+        <img src='{{ URL::asset("uploads/icon.png") }}' width=40%  style="margin-top: 5px; margin-right: 15px">
+      </a>
+      <!-- leftside bar -->
+      {% include 'adminpanel/sidenav.html' %}
+    </div>
+  </nav>
+  
+  
